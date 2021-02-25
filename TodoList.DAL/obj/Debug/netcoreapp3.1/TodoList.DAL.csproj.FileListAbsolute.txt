@@ -1,0 +1,4 @@
+C:\Users\sergn\source\repos\TodoList\TodoList.DAL\obj\Debug\netcoreapp3.1\TodoList.DAL.csprojAssemblyReference.cache
+C:\Users\sergn\source\repos\TodoList\TodoList.DAL\obj\Debug\netcoreapp3.1\TodoList.DAL.AssemblyInfoInputs.cache
+C:\Users\sergn\source\repos\TodoList\TodoList.DAL\obj\Debug\netcoreapp3.1\TodoList.DAL.AssemblyInfo.cs
+C:\Users\sergn\source\repos\TodoList\TodoList.DAL\obj\Debug\netcoreapp3.1\TodoList.DAL.csproj.CoreCompileInputs.cache
