@@ -31,6 +31,7 @@ namespace TodoList.DAL.Repositories
             {
                 // todo handle this
                 //throw new
+                throw;
             }
         }
 
@@ -52,6 +53,7 @@ namespace TodoList.DAL.Repositories
             {
                 // todo handle this
                 //throw new
+                throw;
             }
         }
 
@@ -75,7 +77,7 @@ namespace TodoList.DAL.Repositories
 
         public async Task UpdateAsync(TaskDal task)
         {
-            _context.Entry(task).State = System.Data.Entity.EntityState.Modified;
+            _context.Entry(task).State = EntityState.Modified;
             try
             {
                 await _context.SaveChangesAsync();
@@ -83,6 +85,7 @@ namespace TodoList.DAL.Repositories
             catch
             {
                 // todo handle
+                throw;
             }
         }
     }

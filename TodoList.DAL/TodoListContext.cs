@@ -1,20 +1,26 @@
-﻿using System.Data.Entity;
+﻿using Microsoft.EntityFrameworkCore;
 using TodoList.DAL.Models;
 
 namespace TodoList.DAL
 {
     public class TodoListContext : DbContext
     {
-        public TodoListContext() : base("DefaultConnection") { }
+        public TodoListContext(DbContextOptions<TodoListContext> options)
+            : base(options) { }
 
         public DbSet<UserDal> Users { get; set; }
         public DbSet<TaskDal> Tasks { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<TaskDal>()
+                .HasOne(x => x.Owner)
+                .WithMany();
+
             modelBuilder.Entity<UserDal>()
-                .HasMany(_ => _.Tasks)
-                .WithRequired(_ => _.Owner);
+                .HasData(
+                new UserDal { UserName = "TestUser", IsAdmin = false },
+                new UserDal { UserName = "TestAdmin", IsAdmin = true });
         }
     }
 }
