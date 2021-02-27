@@ -36,7 +36,7 @@ namespace TodoList.API
             services.AddTransient<IRepository<UserDal>, UserRepository>();
             services.AddTransient<IRepository<TaskDal>, TaskRepository>();
 
-            services.AddControllers();
+            services.AddControllers(options => options.SuppressAsyncSuffixInActionNames = false);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

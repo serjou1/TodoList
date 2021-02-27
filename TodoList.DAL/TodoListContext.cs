@@ -19,8 +19,10 @@ namespace TodoList.DAL
 
             modelBuilder.Entity<UserDal>()
                 .HasData(
-                new UserDal { UserName = "TestUser", IsAdmin = false },
-                new UserDal { UserName = "TestAdmin", IsAdmin = true });
+                new UserDal { UserName = "TestUser", IsAdmin = false, Id = 1 },
+                new UserDal { UserName = "TestAdmin", IsAdmin = true, Id = 2 });
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
