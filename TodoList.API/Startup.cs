@@ -36,7 +36,9 @@ namespace TodoList.API
             services.AddTransient<IRepository<UserDal>, UserRepository>();
             services.AddTransient<IRepository<TaskDal>, TaskRepository>();
 
-            services.AddControllers(options => options.SuppressAsyncSuffixInActionNames = false);
+            services
+                .AddControllers(options => options.SuppressAsyncSuffixInActionNames = false)
+                .AddNewtonsoftJson();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

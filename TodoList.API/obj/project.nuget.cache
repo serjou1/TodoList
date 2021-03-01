@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "ATmIHuVDrsiAd9fER1DeUbL1ejkHJHfHF90rssxr32LKR5VJklf4cPomtE56yMtbyK2Qyu91qG5BP8fKUc48lg==",
+  "dgSpecHash": "8ORQeMVEankSqfXwOGEmwNTgnlPaI24piXfed0U7WgYhfbX5+zqZyib1HYpKKXl6eNliooSrzIHgraxp99H/Hg==",
   "success": true,
   "projectFilePath": "C:\\Users\\sergn\\source\\repos\\TodoList\\TodoList.API\\TodoList.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\sergn\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\sergn\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\5.0.3\\microsoft.aspnetcore.jsonpatch.5.0.3.nupkg.sha512",
+    "C:\\Users\\sergn\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.12\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.12.nupkg.sha512",
     "C:\\Users\\sergn\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\sergn\\.nuget\\packages\\microsoft.data.sqlite.core\\5.0.3\\microsoft.data.sqlite.core.5.0.3.nupkg.sha512",
     "C:\\Users\\sergn\\.nuget\\packages\\microsoft.dotnet.platformabstractions\\3.1.6\\microsoft.dotnet.platformabstractions.3.1.6.nupkg.sha512",
@@ -25,6 +27,8 @@
     "C:\\Users\\sergn\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\sergn\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
     "C:\\Users\\sergn\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+    "C:\\Users\\sergn\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\sergn\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\sergn\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.0.4\\sqlitepclraw.bundle_e_sqlite3.2.0.4.nupkg.sha512",
     "C:\\Users\\sergn\\.nuget\\packages\\sqlitepclraw.core\\2.0.4\\sqlitepclraw.core.2.0.4.nupkg.sha512",
     "C:\\Users\\sergn\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.0.4\\sqlitepclraw.lib.e_sqlite3.2.0.4.nupkg.sha512",

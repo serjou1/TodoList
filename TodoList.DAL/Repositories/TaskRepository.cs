@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TodoList.DAL.Interfaces;
 using TodoList.DAL.Models;
+using TodoList.DAL.Repositories.Exceptions;
 
 namespace TodoList.DAL.Repositories
 {
@@ -44,16 +45,16 @@ namespace TodoList.DAL.Repositories
 
             try
             {
-                var numberOfEntities = await _context.SaveChangesAsync();
-                // todo if 0
-                //if (numberOfEntities == 0)
-                //    throw new 
+                await _context.SaveChangesAsync();
             }
-            catch (DbUpdateException e)
+            catch (DbUpdateConcurrencyException e)
             {
-                // todo handle this
-                //throw new
-                throw;
+                if (e.Entries.Count == 1 && e.Entries.First().Entity is TaskDal && (e.Entries.First().Entity as TaskDal).Id == id)
+                    throw new EntryDoesNotExistsException();
+
+                throw new NotSupportedException(
+                    "Don't know how to handle concurrency conflicts",
+                    e);
             }
         }
 

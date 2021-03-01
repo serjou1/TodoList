@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 using TodoList.DAL;
 using TodoList.DAL.Interfaces;
 using TodoList.DAL.Models;
+using TodoList.DAL.Repositories.Exceptions;
 
 namespace TodoList.API.Controllers
 {
@@ -56,6 +58,34 @@ namespace TodoList.API.Controllers
                 nameof(GetTaskAsync),
                 new { id = task.Id },
                 task);
+        }
+
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> EditTask(int id, [FromBody] JsonPatchDocument<TaskDal> patchTask)
+        {
+            var task = await _taskRepository.GetAsync(id);
+
+            if (task is null)
+                return NotFound($"Task with id {id} was not found");
+
+            patchTask.ApplyTo(task);
+            await _taskRepository.UpdateAsync(task);
+
+            return Ok(task);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTask(int id)
+        {
+            try
+            {
+                await _taskRepository.DeleteAsync(id);
+                return Ok($"Task with id {id} was deleted");
+            }
+            catch (EntryDoesNotExistsException)
+            {
+                return NotFound($"Task with id {id} was not found");
+            }
         }
     }
 }
