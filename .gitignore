@@ -224,6 +224,9 @@ project.lock.json
 *.mp4
 *.webm
 
+# database files
+*.db
+
 #####
 # End of core ignore list, below put you custom 'per project' settings (patterns or path)
 #####
