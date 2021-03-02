@@ -94,10 +94,12 @@ namespace TodoList.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTask(int id)
         {
-
             if (!User.IsInRole("Admin"))
             {
                 var task = await _taskRepository.GetAsync(id);
+                if (task is null)
+                    return NotFound($"Task with id {id} was not found");
+
                 var userIdString = User.FindFirstValue(ClaimTypes.SerialNumber);
                 if (task.OwnerId.ToString() != userIdString)
                     return Unauthorized($"Task with id {id} does not belong to user with id {userIdString}");
