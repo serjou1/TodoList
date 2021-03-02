@@ -52,7 +52,10 @@ namespace TodoList.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateTask(TaskDal task)
         {
-            var userIdString = User.FindFirstValue(ClaimTypes.SerialNumber);
+            var userIdString = User?.FindFirstValue(ClaimTypes.SerialNumber);
+            if (string.IsNullOrEmpty(userIdString))
+                return Unauthorized();
+
             if (!int.TryParse(userIdString, out var userId))
                 return BadRequest();
 

@@ -22,16 +22,7 @@ namespace TodoList.DAL.Repositories
         {
             _context.Users.Add(user);
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException e)
-            {
-                // todo handle this
-                //throw new
-                throw;
-            }
+            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(int id)
@@ -41,19 +32,7 @@ namespace TodoList.DAL.Repositories
             _context.Users.Attach(user);
             _context.Users.Remove(user);
 
-            try
-            {
-                var numberOfEntities = await _context.SaveChangesAsync();
-                // todo if 0
-                //if (numberOfEntities == 0)
-                //    throw new 
-            }
-            catch (DbUpdateException e)
-            {
-                // todo handle this
-                //throw new
-                throw;
-            }
+            await _context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<UserDal>> FindAsync(Expression<Func<UserDal, bool>> predicate)
@@ -74,15 +53,7 @@ namespace TodoList.DAL.Repositories
         public async Task UpdateAsync(UserDal user)
         {
             _context.Entry(user).State = EntityState.Modified;
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch
-            {
-                // todo handle
-                throw;
-            }
+            await _context.SaveChangesAsync();
         }
     }
 }

@@ -24,16 +24,7 @@ namespace TodoList.DAL.Repositories
         {
             _context.Tasks.Add(task);
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException e)
-            {
-                // todo handle this
-                //throw new
-                throw;
-            }
+            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(int id)
@@ -70,24 +61,13 @@ namespace TodoList.DAL.Repositories
 
         public async Task<TaskDal> GetAsync(int id)
         {
-            return await _context.Tasks.FindAsync(id);// ?? new 
-
-            // todo if user null
-
+            return await _context.Tasks.FindAsync(id);
         }
 
         public async Task UpdateAsync(TaskDal task)
         {
             _context.Entry(task).State = EntityState.Modified;
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch
-            {
-                // todo handle
-                throw;
-            }
+            await _context.SaveChangesAsync();
         }
     }
 }
