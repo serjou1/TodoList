@@ -17,21 +17,20 @@ namespace TodoList.API.Controllers
     [Route("api/[Controller]")]
     public class TasksController : ControllerBase
     {
-        //private readonly ILogger _logger;
-
         private readonly IRepository<TaskDal> _taskRepository;
 
         public TasksController(
             IRepository<TaskDal> taskRepository)
         {
-            //_logger = logger;
-
             _taskRepository = taskRepository;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<TaskDal>> GetTasksAsync()
-            => await _taskRepository.GetAllAsync();
+        public async Task<IActionResult> GetTasksAsync([FromQuery] Filter filter)
+        {
+            var list = await _taskRepository.FindAsync(t => t.IsDone == (filter.IsDone ?? t.IsDone));
+            return Ok(list);
+        }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTaskAsync(int id)
