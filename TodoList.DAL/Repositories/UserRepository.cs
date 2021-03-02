@@ -68,10 +68,7 @@ namespace TodoList.DAL.Repositories
 
         public async Task<UserDal> GetAsync(int id)
         {
-            return await _context.Users.FindAsync(id);// ?? new 
-
-            // todo if user null
-
+            return await _context.Users.FindAsync(id);
         }
 
         public async Task UpdateAsync(UserDal user)

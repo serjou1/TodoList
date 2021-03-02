@@ -10,6 +10,8 @@ namespace TodoList.DAL.Models
         public int Id { get; set; }
         public string TaskDescription { get; set; }
         public bool IsDone { get; set; }
+
+        public int OwnerId { get; set; }
         public UserDal Owner { get; set; }
     }
 }

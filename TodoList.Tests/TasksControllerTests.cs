@@ -11,13 +11,17 @@ namespace TodoList.Tests
 {
     public class TasksControllerTests
     {
-        private readonly Mock<IRepository<TaskDal>> _mockRepo;
+        private readonly Mock<IRepository<TaskDal>> _mockTasksRepo;
+        private readonly Mock<IRepository<UserDal>> _mockUsersRepo;
         private readonly TasksController _controller;
 
         public TasksControllerTests()
         {
-            _mockRepo = new Mock<IRepository<TaskDal>>();
-            _controller = new TasksController(_mockRepo.Object);
+            _mockTasksRepo = new Mock<IRepository<TaskDal>>();
+            _mockUsersRepo = new Mock<IRepository<UserDal>>();
+            _controller = new TasksController(
+                _mockTasksRepo.Object,
+                _mockUsersRepo.Object);
         }
 
         [Fact]

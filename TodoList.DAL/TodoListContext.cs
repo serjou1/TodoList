@@ -14,8 +14,9 @@ namespace TodoList.DAL
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<TaskDal>()
-                .HasOne(x => x.Owner)
-                .WithMany();
+                .HasOne(t => t.Owner)
+                .WithMany(u => u.Tasks)
+                .HasForeignKey(t => t.OwnerId);
 
             modelBuilder.Entity<UserDal>()
                 .HasData(

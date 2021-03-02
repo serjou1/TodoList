@@ -33,6 +33,9 @@ namespace TodoList.API
             var connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<TodoListContext>(optionsAction => optionsAction.UseSqlite(connection));
 
+            services.AddAuthentication("My")
+                .AddScheme<MyCustomAuthenticationSchemeOptions, MyCustomAuthenticationHandler>("My", options => { });
+
             services.AddTransient<IRepository<UserDal>, UserRepository>();
             services.AddTransient<IRepository<TaskDal>, TaskRepository>();
 
@@ -52,6 +55,8 @@ namespace TodoList.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
